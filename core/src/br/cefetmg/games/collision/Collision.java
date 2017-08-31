@@ -21,20 +21,6 @@ public class Collision {
     }
 
     /**
-     * Verifica se dois intervalos em 1D estão colidindo.
-     * @param min1 valor mais à esquerda do intervalo 1
-     * @param max1 valor mais à direita do intervalo 1
-     * @param min2 valor mais à esquerda do intervalo 2
-     * @param max2 valor mais à direita do intervalo 2
-     * @return true se há colisão ou false, do contrário.
-     */
-    private static boolean rangesIntersect(
-            float min1, float max1,
-            float min2, float max2) {
-        return false;
-    }
-
-    /**
      * Verifica se dois retângulos em 2D estão colidindo.
      * Esta função pode verificar se o eixo X dos dois objetos está colidindo
      * e então se o mesmo ocorre com o eixo Y.
@@ -45,16 +31,4 @@ public class Collision {
     public static final boolean rectsOverlap(Rectangle r1, Rectangle r2) {
         return false;
     }
-    
-    
-    /**
-     * Verifica se um retângulo está colidindo com um círculo em 2D.
-     * @param r retângulo
-     * @param c círculo
-     * @return true se há colisão ou false, do contrário.
-     */
-    public static final boolean rectCircleOverlap(Rectangle r, Circle c) {
-        return false;
-    }
-
 }

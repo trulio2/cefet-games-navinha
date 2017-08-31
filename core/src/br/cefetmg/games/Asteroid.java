@@ -106,14 +106,6 @@ public class Asteroid implements Entity, Collidable {
     }
     
     @Override
-    public boolean collided(Collidable other) {
-        // recicla para reaproveitar
-        recycle(area.height);
-        // destrói o asteroid se ele colidir com qualquer coisa
-        return true;
-    }
-
-    @Override
     public Rectangle getMinimumBoundingRectangle() {
         return bounds;
     }

@@ -59,9 +59,10 @@ Os controles implementados são:
 - <kbd>+</kbd>, <kbd>-</kbd>: acelera/desacelera as estrelinhas
 - <kbd>Esc</kbd>: sai do jogo
 
-## Exercício
+## Atividade
 
-Você deve implementar, na classe `Collision.java`, os métodos para verificar
+Esta atividade está dividida em 2 exercícios e 1 desafio. Você deve
+implementar, na classe `Collision.java`, os métodos para verificar
 a colisão de círculo com círculo (`boolean circlesOverlap(Circle c1,
 Circle c2)`) e retângulo com retângulo (`boolean rectsOverlap(Rectangle r1,
 Rectangle r2)`), sem usar a implementação da própria LibGDX para tal
@@ -83,15 +84,34 @@ public class Collision {
 Lembre-se de que é interessante os métodos de vetores já implementados em
 `Vector2` (e `Vector3`) da LibGDX. Veja a [documentação do `Vector2`][vector2].
 
-Para calcular a colisão entre os objetos, considere:
+
+### Exercício 1
+
+Para calcular a colisão entre alguns objetos, implemente na classe `Collision`
+o método `circlesOverlap` considerando:
 
 1. Círculo _vs_ círculo
    - Colidem se a distância entre eles é menor que a soma de seus raios
    - _Nota: tente fazer essa verificação sem usar a operação de radiciação_
+
+### Exercício 2
+
+Agora, implemente o método `rectsOverlap` considerando:
+
 1. Retângulo _vs_ retângulo
    - Colidem se todos os eixos (x, y, z?) colidem
    - Um eixo está em colisão se `max<sub>1</sub>` &gte; `min<sub>2</sub>` e
      `min<sub>1</sub>` &lte; `max<sub>1`
+
+### Desafio 1
+
+Crie um método e o implemente (em `Collision.java`) que verifique se houve
+colisão entre um círculo e um retângulo. Um caso de uso seria a colisão entre
+o tiro laserShot e um asteróide.
+
+Para tanto, você deve também alterar `LaserShot.java` para usar esse novo
+método de detecção de colisão. Use a funcionalidade de _debug_ do jogo
+para verificar se está funcionando.
 
 [vector2]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Vector2.html
 [shape]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ShapeRenderer.html

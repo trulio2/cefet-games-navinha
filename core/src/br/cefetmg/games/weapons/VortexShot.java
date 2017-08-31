@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector2;
  * Um tiro de vórtice.
  * @author fegemo <coutinho@decom.cefetmg.br>
  */
-public class VortexShot extends Shot {
+public class VortexShot implements Shot {
 
     private final Vector2 position;
     private final float speed;

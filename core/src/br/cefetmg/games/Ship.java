@@ -111,7 +111,7 @@ public class Ship implements Entity, Collidable {
     @Override
     public void render(ShapeRenderer renderer) {
         renderer.identity();
-//        renderer.begin(ShapeRenderer.ShapeType.Line);
+        renderer.begin(ShapeRenderer.ShapeType.Line);
         renderer.translate(position.x, position.y, 0);
         renderer.scale(scale, scale, 1);
         renderer.setColor(Color.WHITE);
@@ -121,7 +121,7 @@ public class Ship implements Entity, Collidable {
             renderer.setColor(Color.YELLOW);
             renderer.circle(circle.x, circle.y, circle.radius);
         }
-//        renderer.end();
+        renderer.end();
     }
 
     void switchWeapon() {
@@ -138,12 +138,6 @@ public class Ship implements Entity, Collidable {
         } else {
             return false;
         }
-    }
-
-    @Override
-    public boolean collided(Collidable other) {
-        // não faz nada porque o jogador é super poderoso neste jogo
-        return false;
     }
 
     @Override

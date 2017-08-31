@@ -16,13 +16,6 @@ public interface Collidable {
     boolean collidesWith(Collidable other);
     
     /**
-     * É chamado para que as consequências de uma colisão sejam aplicadas.
-     * @param other o objeto com quem este colidiu.
-     * @return true/false indicando se esta entidade foi destruída.
-     */
-    boolean collided(Collidable other);
-    
-    /**
      * Verifica se este objeto está fora de uma região retangular.
      * @param area área retangular.
      * @return true/false se está pelo menos parcialmente fora da região.

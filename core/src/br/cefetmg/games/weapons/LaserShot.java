@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector2;
  * Tiro laser.
  * @author fegemo <coutinho@decom.cefetmg.br>
  */
-public class LaserShot extends Shot {
+public class LaserShot implements Shot {
 
     private static final float WIDTH = 4;
     private static final float HEIGHT = 14;
