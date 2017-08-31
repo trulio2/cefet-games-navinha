@@ -1,8 +1,7 @@
-package br.cefetmg.games.util;
+package br.cefetmg.games.collision;
 
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 
 /**
  * Utilitário para verificação de colisão.
@@ -44,6 +43,17 @@ public class Collision {
      * @return true se há colisão ou false, do contrário.
      */
     public static final boolean rectsOverlap(Rectangle r1, Rectangle r2) {
+        return false;
+    }
+    
+    
+    /**
+     * Verifica se um retângulo está colidindo com um círculo em 2D.
+     * @param r retângulo
+     * @param c círculo
+     * @return true se há colisão ou false, do contrário.
+     */
+    public static final boolean rectCircleOverlap(Rectangle r, Circle c) {
         return false;
     }
 

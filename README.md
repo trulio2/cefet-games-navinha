@@ -4,23 +4,34 @@ Um jogo de navinhas destruindo asteróides.
 
 ## Descrição
 
-Este é um jogo em que se controla uma nave que deve atirar nos asteróides... para sempre. E sem contar pontos. Com uma navinha imortal.
+Este é um jogo em que se controla uma nave que deve atirar nos asteróides...
+para sempre. E sem contar pontos. Com uma navinha imortal.
 
 ![](docs/interface.png)
 
 ### Funcionamento
 
-Atualmente, o jogo está funcionando mas nenhum objeto colide com o outro. Esta atividade prática consiste em implementar os métodos que verificam se houve colisão entre objetos.
+Atualmente, o jogo está funcionando mas nenhum objeto colide com o outro.
+Esta atividade prática consiste em implementar os métodos que verificam
+se houve colisão entre objetos.
 
-Os asteróides vão indo na direção da nave, que deve destruí-los ou desviar deles. Quando um asteróide é destruído ou sai da tela, ele é "reciclado": seu objeto na RAM é reaproveitado, recebendo uma nova forma, tamanho e posição acima da tela. Quando um asteróide atinge a nave do jogador ele também é reciclado.
+Os asteróides vão indo na direção da nave, que deve destruí-los ou desviar
+deles. Quando um asteróide é destruído ou sai da tela, ele é "reciclado":
+seu objeto na RAM é reaproveitado, recebendo uma nova forma, tamanho e
+posição acima da tela. Quando um asteróide atinge a nave do jogador ele
+também é reciclado.
 
-Um tiro é adicionado a uma lista (`Array`) quando disparado e removido dela quando (i) ele sai da tela ou (ii) ele atinge um asteróide.
+Um tiro é adicionado a uma lista (`Array`) quando disparado e removido
+dela quando (i) ele sai da tela ou (ii) ele atinge um asteróide.
 
 ### Detalhes da Implementação
 
-Não foram usadas imagens neste jogo, portanto, não foi usada uma `SpriteBatch`. Todos os objetos estão sendo desenhados como primitivas do OpenGL: pontos, polígonos, linhas etc.
+Não foram usadas imagens neste jogo, portanto, não foi usada uma
+`SpriteBatch`. Todos os objetos estão sendo desenhados como primitivas do
+OpenGL: pontos, polígonos, linhas etc.
 
-A LibGDX possui o `ShapeRenderer` que expõe funções de desenho dessas primitivas.
+A LibGDX possui o `ShapeRenderer` que expõe funções de desenho
+dessas primitivas.
 
 Um exemplo de uso do `ShapeRenderer` para desenhar um tiro a laser:
 
@@ -45,6 +56,8 @@ Os controles implementados são:
   - Quando em _debug_, os _colliders_ de cada entidade são desenhados
 - <kbd>Espaço</kbd>: atira usando a arma corrente
 - <kbd>Tab</kbd>: troca para a próxima arma
+- <kbd>+</kbd>, <kbd>-</kbd>: acelera/desacelera as estrelinhas
+- <kbd>Esc</kbd>: sai do jogo
 
 ## Exercício
 
@@ -73,11 +86,12 @@ Lembre-se de que é interessante os métodos de vetores já implementados em
 Para calcular a colisão entre os objetos, considere:
 
 1. Círculo _vs_ círculo
-  - Colidem se a distância entre eles é menor que a soma de seus raios
-  - _Nota: tente fazer essa verificação sem usar a operação de radiciação_
+   - Colidem se a distância entre eles é menor que a soma de seus raios
+   - _Nota: tente fazer essa verificação sem usar a operação de radiciação_
 1. Retângulo _vs_ retângulo
-  - Colidem se todos os eixos (x, y, z?) colidem
-  - Um eixo está em colisão se `max<sub>1</sub>` &gte; `min<sub>2</sub>` e `min<sub>1</sub>` &lte; `max<sub>1`
+   - Colidem se todos os eixos (x, y, z?) colidem
+   - Um eixo está em colisão se `max<sub>1</sub>` &gte; `min<sub>2</sub>` e
+     `min<sub>1</sub>` &lte; `max<sub>1`
 
 [vector2]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/math/Vector2.html
 [shape]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/graphics/glutils/ShapeRenderer.html

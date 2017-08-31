@@ -1,8 +1,7 @@
 package br.cefetmg.games;
 
-import br.cefetmg.games.util.Collidable;
-import br.cefetmg.games.util.Collision;
-import br.cefetmg.games.util.Entity;
+import br.cefetmg.games.collision.Collidable;
+import br.cefetmg.games.collision.Collision;
 import br.cefetmg.games.weapons.LaserWeapon;
 import br.cefetmg.games.weapons.Shot;
 import br.cefetmg.games.weapons.VortexWeapon;
@@ -17,6 +16,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 
 /**
  * A nave do jogador.
+ *
  * @author fegemo <coutinho@decom.cefetmg.br>
  */
 public class Ship implements Entity, Collidable {
@@ -55,11 +55,11 @@ public class Ship implements Entity, Collidable {
 
         weapons = new Array<Weapon>(new Weapon[]{
             new LaserWeapon(
-                new Vector2(VERTICES[1 * 2] * scale, VERTICES[1 * 2 + 1] * scale),
-                new Vector2(VERTICES[5 * 2] * scale, VERTICES[5 * 2 + 1] * scale)
+            new Vector2(VERTICES[1 * 2] * scale, VERTICES[1 * 2 + 1] * scale),
+            new Vector2(VERTICES[5 * 2] * scale, VERTICES[5 * 2 + 1] * scale)
             ),
             new VortexWeapon(
-                new Vector2(VERTICES[3 * 2] * scale, VERTICES[3 * 2 + 1] * scale)
+            new Vector2(VERTICES[3 * 2] * scale, VERTICES[3 * 2 + 1] * scale)
             )
         });
         lastShotMillis = 0;
@@ -111,7 +111,7 @@ public class Ship implements Entity, Collidable {
     @Override
     public void render(ShapeRenderer renderer) {
         renderer.identity();
-        renderer.begin(ShapeRenderer.ShapeType.Line);
+//        renderer.begin(ShapeRenderer.ShapeType.Line);
         renderer.translate(position.x, position.y, 0);
         renderer.scale(scale, scale, 1);
         renderer.setColor(Color.WHITE);
@@ -121,7 +121,7 @@ public class Ship implements Entity, Collidable {
             renderer.setColor(Color.YELLOW);
             renderer.circle(circle.x, circle.y, circle.radius);
         }
-        renderer.end();
+//        renderer.end();
     }
 
     void switchWeapon() {
@@ -134,10 +134,16 @@ public class Ship implements Entity, Collidable {
         // Ship vs Vortex: nada
         // Ship vs Asteroid: circle vs circle
         if (other instanceof Asteroid) {
-            return Collision.circlesOverlap(circle, other.getCircle());
+            return Collision.circlesOverlap(circle, other.getMinimumEnclosingBall());
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean collided(Collidable other) {
+        // não faz nada porque o jogador é super poderoso neste jogo
+        return false;
     }
 
     @Override
@@ -146,12 +152,12 @@ public class Ship implements Entity, Collidable {
     }
 
     @Override
-    public Rectangle getRect() {
+    public Rectangle getMinimumBoundingRectangle() {
         return null;
     }
 
     @Override
-    public Circle getCircle() {
+    public Circle getMinimumEnclosingBall() {
         return circle;
     }
 }

@@ -9,5 +9,10 @@ import com.badlogic.gdx.utils.Array;
  */
 public interface Weapon {
     Array<Shot> createShot(Vector2 origin);
+    
+    /**
+     * Quanto tempo para poder dar o próximo tiro.
+     * @return tempo em milissegundos para poder atirar novamente.
+     */
     long getCadenceInMillis();
 }

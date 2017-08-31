@@ -1,8 +1,7 @@
 package br.cefetmg.games;
 
-import br.cefetmg.games.util.Collidable;
-import br.cefetmg.games.util.Collision;
-import br.cefetmg.games.util.Entity;
+import br.cefetmg.games.collision.Collidable;
+import br.cefetmg.games.collision.Collision;
 import br.cefetmg.games.weapons.LaserShot;
 import br.cefetmg.games.weapons.VortexShot;
 import com.badlogic.gdx.graphics.Color;
@@ -96,23 +95,31 @@ public class Asteroid implements Entity, Collidable {
         // Asteroid vs Vortex: circle vs circle
 
         if (other instanceof LaserShot) {
-            return Collision.rectsOverlap(bounds, other.getRect());
+            return Collision.rectsOverlap(bounds, other.getMinimumBoundingRectangle());
         } else if (other instanceof Asteroid ||
                 other instanceof Ship ||
                 other instanceof VortexShot) {
-            return Collision.circlesOverlap(circle, other.getCircle());
+            return Collision.circlesOverlap(circle, other.getMinimumEnclosingBall());
         } else {
             return false;
         }
     }
+    
+    @Override
+    public boolean collided(Collidable other) {
+        // recicla para reaproveitar
+        recycle(area.height);
+        // destrói o asteroid se ele colidir com qualquer coisa
+        return true;
+    }
 
     @Override
-    public Rectangle getRect() {
+    public Rectangle getMinimumBoundingRectangle() {
         return bounds;
     }
 
     @Override
-    public Circle getCircle() {
+    public Circle getMinimumEnclosingBall() {
         return circle;
     }
 }

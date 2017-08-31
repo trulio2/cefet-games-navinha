@@ -2,8 +2,8 @@ package br.cefetmg.games.weapons;
 
 import br.cefetmg.games.Asteroid;
 import br.cefetmg.games.Config;
-import br.cefetmg.games.util.Collidable;
-import br.cefetmg.games.util.Collision;
+import br.cefetmg.games.collision.Collidable;
+import br.cefetmg.games.collision.Collision;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector2;
  * Um tiro de vórtice.
  * @author fegemo <coutinho@decom.cefetmg.br>
  */
-public class VortexShot implements Shot {
+public class VortexShot extends Shot {
 
     private final Vector2 position;
     private final float speed;
@@ -60,21 +60,21 @@ public class VortexShot implements Shot {
         // Vortex vs Laser: rect vs rect
         // Vortex vs Asteroid: circle vs circle
         if (other instanceof LaserShot) {
-            return Collision.rectsOverlap(bounds, other.getRect());
+            return Collision.rectsOverlap(bounds, other.getMinimumBoundingRectangle());
         } else if (other instanceof Asteroid) {
-            return Collision.circlesOverlap(circle, other.getCircle());
+            return Collision.circlesOverlap(circle, other.getMinimumEnclosingBall());
         } else {
             return false;
         }
     }
 
     @Override
-    public Rectangle getRect() {
+    public Rectangle getMinimumBoundingRectangle() {
         return bounds;
     }
 
     @Override
-    public Circle getCircle() {
+    public Circle getMinimumEnclosingBall() {
         return circle;
     }
 }

@@ -24,6 +24,6 @@ public class VortexWeapon implements Weapon {
 
     @Override
     public long getCadenceInMillis() {
-        return 1200;
+        return 600;
     }
 }

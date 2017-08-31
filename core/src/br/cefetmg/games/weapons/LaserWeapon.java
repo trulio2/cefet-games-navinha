@@ -19,6 +19,7 @@ public class LaserWeapon implements Weapon {
 
     @Override
     public Array<Shot> createShot(Vector2 position) {
+        // dá 2 tiros (esquerda e direita)
         return new Array<Shot>(new Shot[]{
             new LaserShot(new Vector2(originLeft).add(position)),
             new LaserShot(new Vector2(originRight).add(position))
@@ -27,6 +28,6 @@ public class LaserWeapon implements Weapon {
 
     @Override
     public long getCadenceInMillis() {
-        return 500;
+        return 200;
     }
 }

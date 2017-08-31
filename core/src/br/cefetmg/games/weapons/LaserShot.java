@@ -2,8 +2,8 @@ package br.cefetmg.games.weapons;
 
 import br.cefetmg.games.Asteroid;
 import br.cefetmg.games.Config;
-import br.cefetmg.games.util.Collidable;
-import br.cefetmg.games.util.Collision;
+import br.cefetmg.games.collision.Collidable;
+import br.cefetmg.games.collision.Collision;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
@@ -14,7 +14,7 @@ import com.badlogic.gdx.math.Vector2;
  * Tiro laser.
  * @author fegemo <coutinho@decom.cefetmg.br>
  */
-public class LaserShot implements Shot {
+public class LaserShot extends Shot {
 
     private static final float WIDTH = 4;
     private static final float HEIGHT = 14;
@@ -60,19 +60,19 @@ public class LaserShot implements Shot {
         // Laser vs Vortex: rect vs rect
         // Laser vs Ship: nada
         if (other instanceof Asteroid || other instanceof VortexShot) {
-            return Collision.rectsOverlap(bounds, other.getRect());
+            return Collision.rectsOverlap(bounds, other.getMinimumBoundingRectangle());
         } else {
             return false;
         }
     }
-
+    
     @Override
-    public Rectangle getRect() {
+    public Rectangle getMinimumBoundingRectangle() {
         return bounds;
     }
 
     @Override
-    public Circle getCircle() {
+    public Circle getMinimumEnclosingBall() {
         return null;
     }
 }
